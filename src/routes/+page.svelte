@@ -1,5 +1,19 @@
-<script>
+<script lang="ts">
 	import AddNote from '$lib/components/AddNote.svelte';
+	import FormModal from '$lib/components/FormModal.svelte';
+	import type { ModalComponent, ModalSettings } from '@skeletonlabs/skeleton';
+	import { modalStore } from '@skeletonlabs/skeleton';
+
+	const formModal: ModalComponent = {
+		ref: FormModal,
+		props: { background: 'bg-white-100', shadow: 'shadow-xl' },
+		slot: '<div></div>'
+	};
+
+	const form: ModalSettings = {
+		type: 'component',
+		component: formModal
+	};
 </script>
 
 <section class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 m-10">
@@ -18,5 +32,5 @@
 			<button class="btn variant-filled-secondary">Delete</button>
 		</div>
 	</div>
-	<AddNote />
+	<AddNote on:click={() => modalStore.trigger(form)} />
 </section>
