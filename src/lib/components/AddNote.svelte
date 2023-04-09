@@ -1,6 +1,6 @@
 <button
 	on:click
-	class="flex justify-center h-full w-[85%] ring-outline-token rounded-container-token m-5 border-2 border-black dark:border-white border-dashed hover:scale-[1.01] opacity-50 hover:shadow-xl transition-all"
+	class="flex justify-center h-[500px] w-[85%] ring-outline-token rounded-container-token m-5 border-2 border-black dark:border-white border-dashed hover:scale-[1.01] opacity-50 hover:shadow-xl transition-all"
 >
 	<svg
 		xmlns="http://www.w3.org/2000/svg"

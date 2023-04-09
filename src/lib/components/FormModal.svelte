@@ -1,5 +1,5 @@
 <form
-	action="/createNote"
+	action="?/createNote"
 	method="POST"
 	class="p-10 bg-surface-100 dark:bg-surface-800 shadow-xl rounded-2xl"
 >
