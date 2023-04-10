@@ -1,4 +1,15 @@
+<script lang="ts">
+	import { enhance } from '$app/forms';
+	import { modalStore } from '@skeletonlabs/skeleton';
+
+	enum currentMode {
+		editing,
+		creating
+	}
+</script>
+
 <form
+	use:enhance
 	action="?/createNote"
 	method="POST"
 	class="p-10 bg-surface-100 dark:bg-surface-800 shadow-xl rounded-2xl"
@@ -13,5 +24,7 @@
 		<textarea placeholder="Enter your text" name="content" class="textarea h-80" />
 	</label>
 
-	<button class="btn variant-filled-primary mt-5" type="submit">Create note</button>
+	<button class="btn variant-filled-primary mt-5" type="submit" on:click={() => modalStore.close()}
+		>Create note</button
+	>
 </form>

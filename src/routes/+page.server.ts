@@ -1,9 +1,19 @@
 import { prisma } from '$lib/server/prisma';
 import { fail } from '@sveltejs/kit';
+import { superValidate } from 'sveltekit-superforms/server';
+import { z } from 'zod';
 import type { Actions, PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+const noteSchema = z.object({
+	title: z.string().min(1),
+	content: z.string().min(1)
+});
+
+export const load: PageServerLoad = async (event) => {
+	const noteForm = await superValidate(event, noteSchema);
+
 	return {
+		noteForm,
 		notes: await prisma.notes.findMany()
 	};
 };
