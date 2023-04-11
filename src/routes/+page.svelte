@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import AddNote from '$lib/components/AddNote.svelte';
-	import FormModal from '$lib/components/FormModal.svelte';
+	import CreateNoteModal from '$lib/components/CreateNoteModal.svelte';
 	import type { ModalComponent, ModalSettings } from '@skeletonlabs/skeleton';
 	import { modalStore } from '@skeletonlabs/skeleton';
 	import { fly } from 'svelte/transition';
@@ -10,14 +10,14 @@
 
 	$: ({ notes } = data);
 
-	const formModal: ModalComponent = {
-		ref: FormModal,
+	const createNoteModalComponent: ModalComponent = {
+		ref: CreateNoteModal,
 		props: { background: 'bg-white-100', shadow: 'shadow-xl' }
 	};
 
-	const form: ModalSettings = {
+	const createNoteModal: ModalSettings = {
 		type: 'component',
-		component: formModal
+		component: createNoteModalComponent
 	};
 </script>
 
@@ -27,9 +27,7 @@
 			<h4 class="card-header">{note.title}</h4>
 			<p class="m-5 text-justify text-clip">{note.content}</p>
 			<div class="flex card-footer flex-row">
-				<form use:enhance action="?/editNote&id={note.id}" method="POST">
-					<button class="btn variant-ghost-primary mr-3">Edit</button>
-				</form>
+				<a href="/{note.id}" class="btn variant-ghost-primary mr-3">Edit</a>
 				<form use:enhance action="?/deleteNote&id={note.id}" method="POST">
 					<button class="btn variant-ghost-secondary">Delete</button>
 				</form>
@@ -37,5 +35,5 @@
 		</div>
 	{/each}
 
-	<AddNote on:click={() => modalStore.trigger(form)} />
+	<AddNote on:click={() => modalStore.trigger(createNoteModal)} />
 </section>

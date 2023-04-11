@@ -1,18 +1,13 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { modalStore } from '@skeletonlabs/skeleton';
-
-	enum currentMode {
-		editing,
-		creating
-	}
 </script>
 
 <form
 	use:enhance
 	action="?/createNote"
 	method="POST"
-	class="p-10 bg-surface-100 dark:bg-surface-800 shadow-xl rounded-2xl"
+	class="p-10 w-full lg:w-1/3 bg-surface-100 dark:bg-surface-800 shadow-xl rounded-2xl"
 >
 	<label>
 		<span>Title</span>
