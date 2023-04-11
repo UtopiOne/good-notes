@@ -23,9 +23,12 @@
 
 <section class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 m-10">
 	{#each notes as note}
-		<div class="card card-hover h-[500px] m-5" transition:fly={{ y: 100, duration: 250 }}>
-			<h4 class="card-header">{note.title}</h4>
-			<p class="m-5 text-justify text-clip">{note.content}</p>
+		<div
+			class="card card-hover h-[500px] lg:m-5 overflow-auto"
+			transition:fly={{ y: 100, duration: 250 }}
+		>
+			<h4 class="card-header text-clip">{note.title}</h4>
+			<p class="m-5 text-justify whitespace-pre-line scroll-m-14 overflow-hidden">{note.content}</p>
 			<div class="flex card-footer flex-row">
 				<a href="/{note.id}" class="btn variant-ghost-primary mr-3">Edit</a>
 				<form use:enhance action="?/deleteNote&id={note.id}" method="POST">
