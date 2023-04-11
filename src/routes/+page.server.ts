@@ -4,7 +4,11 @@ import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
 	return {
-		notes: await prisma.notes.findMany()
+		notes: await prisma.notes.findMany({
+			orderBy: {
+				id: 'asc'
+			}
+		})
 	};
 };
 
