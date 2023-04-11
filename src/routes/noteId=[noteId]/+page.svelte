@@ -15,6 +15,8 @@
 			name="title"
 			class="input"
 			bind:value={note.title}
+			minlength="1"
+			maxlength="50"
 		/>
 	</label>
 
@@ -25,6 +27,8 @@
 			name="content"
 			class="textarea h-80"
 			bind:value={note.content}
+			minlength="1"
+			maxlength="50"
 		/>
 	</label>
 

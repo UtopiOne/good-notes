@@ -11,12 +11,25 @@
 >
 	<label>
 		<span>Title</span>
-		<input placeholder="Note title" type="text" name="title" class="input" />
+		<input
+			placeholder="Note title"
+			type="text"
+			name="title"
+			class="input"
+			minlength="1"
+			maxlength="50"
+		/>
 	</label>
 
 	<label class="mt-5">
 		<span>Contents</span>
-		<textarea placeholder="Enter your text" name="content" class="textarea h-80" />
+		<textarea
+			placeholder="Enter your text"
+			name="content"
+			class="textarea h-80"
+			minlength="1"
+			maxlength="7000"
+		/>
 	</label>
 
 	<button class="btn variant-filled-primary mt-5" type="submit" on:click={() => modalStore.close()}
