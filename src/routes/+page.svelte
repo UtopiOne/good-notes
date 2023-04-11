@@ -21,6 +21,12 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Good Notes</title>
+	<meta name="description" content="Your notes app" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</svelte:head>
+
 <section class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 m-10">
 	{#each notes as note}
 		<div
@@ -30,13 +36,18 @@
 			<h4 class="card-header text-clip">{note.title}</h4>
 			<p class="m-5 text-justify whitespace-pre-line scroll-m-14 overflow-hidden">{note.content}</p>
 			<div class="flex card-footer flex-row">
-				<a href="/{note.id}" class="btn variant-ghost-primary mr-3">Edit</a>
+				<form action="/noteId={note.id}">
+					<button
+						class="chip variant-filled-primary mr-3 no-underline"
+						type="submit"
+						aria-label="Edit note">Edit</button
+					>
+				</form>
 				<form use:enhance action="?/deleteNote&id={note.id}" method="POST">
-					<button class="btn variant-ghost-secondary">Delete</button>
+					<button class="chip variant-filled-secondary" aria-label="Delete note">Delete</button>
 				</form>
 			</div>
 		</div>
 	{/each}
-
 	<AddNote on:click={() => modalStore.trigger(createNoteModal)} />
 </section>

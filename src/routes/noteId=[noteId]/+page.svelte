@@ -1,11 +1,12 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { fly } from 'svelte/transition';
 
 	export let data;
 	$: ({ note } = data);
 </script>
 
-<form use:enhance action="?/editNote" method="POST" class="m-10">
+<form use:enhance action="?/editNote" method="POST" class="m-10" in:fly={{ y: 100, duration: 250 }}>
 	<label>
 		<span>Title</span>
 		<input
